@@ -1,0 +1,69 @@
+<graph id="Graph">
+  <version>1.0</version>
+  <node id="Read">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>D:\sentinel\S2A_MSIL1C_20180223T073911_N0206_R092_T37MCS_20180223T112255.SAFE</file>
+    </parameters>
+  </node>
+  <node id="Sen2Cor">
+    <operator>Sen2Cor</operator>
+    <sources>
+      <sourceProduct refid="Read"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <targetProductFile/>
+      <postExecuteTemplate>Sen2Cor-post-template.vm</postExecuteTemplate>
+      <sceneOnly/>
+      <resolution>60</resolution>
+      <crOnly>false</crOnly>
+     <gip25L2A>Sen2Cor-gipp-template.xsl</gip25L2A>
+      <gipL2A>Sen2Cor-gipp-template.xsl</gipL2A>
+      <nbProcesses>1</nbProcesses>
+      <medianFilter>0</medianFilter>
+      <aerosol>RURAL</aerosol>
+      <midLat>SUMMER</midLat>
+      <ozone>h - 331</ozone>
+      <wvCorrection>1</wvCorrection>
+      <visUpdateMode>1</visUpdateMode>
+      <wvWatermask>1</wvWatermask>
+      <cirrusCorrection>FALSE</cirrusCorrection>
+      <brdfCorrection>0</brdfCorrection>
+      <brdfLower>0.22</brdfLower>
+      <visibility>23.0</visibility>
+      <altitude>0.1</altitude>
+      <wvThresCirrus>0.25</wvThresCirrus>
+      <demDirectory>NONE</demDirectory>
+      <demReference>http://data_public:GDdci@data.cgiar-csi.org/srtm/tiles/GeoTIFF/</demReference>
+      <demUnit>0</demUnit>
+      <adjacencyRange>1.0</adjacencyRange>
+      <smoothWVMap>100.0</smoothWVMap>
+      <Generate DEM output>FALSE</Generate DEM output>
+      <Generate TCI output>TRUE</Generate TCI output>
+      <Generate DDV output>FALSE</Generate DDV output>
+    </parameters>
+  </node>
+  <node id="Write">
+    <operator>Write</operator>
+    <sources>
+      <sourceProduct refid="Sen2Cor"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>D:\sentinel\Test\S2A_MSIL2A_20180223T073911_N0206_R092_T37MCS_20180223T112255.dim</file>
+      <formatName>BEAM-DIMAP</formatName>
+    </parameters>
+  </node>
+  <applicationData id="Presentation">
+    <Description/>
+    <node id="Read">
+            <displayPosition x="36.0" y="133.0"/>
+    </node>
+    <node id="Sen2Cor">
+      <displayPosition x="234.0" y="157.0"/>
+    </node>
+    <node id="Write">
+            <displayPosition x="455.0" y="135.0"/>
+    </node>
+  </applicationData>
+</graph>
