@@ -18,21 +18,21 @@ set gptPath="C:\Program Files\snap\bin\gpt.exe"
 set graphXmlPath=%1
 
 :: second parameter is a path to a parameter file
-set parameterFilePath=%2
+:: set parameterFilePath=%2
 
 :: use third parameter for path to source products
-set sourceDirectory=%3
+set sourceDirectory=%2
 :: if sourceDirectory ends with '\' remove it
 if %sourceDirectory:~-1%==\ set sourceDirectory=%sourceDirectory:~0,-1%
 
 :: use third parameter for path to target products
-set targetDirectory=%4
+set targetDirectory=%3
 :: if targetDirectory ends with '\' remove it
 if %targetDirectory:~-1%==\ set targetDirectory=%targetDirectory:~0,-1%
 
 :: the fourth parameter is a file prefix for the target product name, 
 :: typically indicating the type of processing
-set targetFilePrefix=%5
+:: set targetFilePrefix=%5
 
 :: Create the target directory
 md %targetDirectory%
@@ -49,7 +49,10 @@ for /D /R %sourceDirectory% %%F in (S2*.SAFE) do (
   set sourceFile=%%~fF
   echo Processing !sourceFile!
   :: '~nF' means filename without extension of 'F'
-  set targetFile=%targetDirectory%\%targetFilePrefix%_%%~nF.dim
-  set procCmd=%gptPath% %graphXmlPath% -e -p %parameterFilePath% -t "!targetFile!" "!sourceFile!"
+  :: set targetFile=%targetDirectory%\%targetFilePrefix%_%%~nF.dim
+  set targetFile=%targetDirectory%\%%~nF.dim
+  :: set procCmd=%gptPath% %graphXmlPath% -e -p %parameterFilePath% -t "!targetFile!" "!sourceFile!"
+  set procCmd=%gptPath% %graphXmlPath% -e -t "!targetFile!" -Psource="!sourceFile!"
+  echo !procCmd!
   call !procCmd! 
 )

@@ -4,7 +4,7 @@
     <operator>Read</operator>
     <sources/>
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
-      <file>D:\sentinel\S2A_MSIL1C_20180223T073911_N0206_R092_T37MCS_20180223T112255.SAFE</file>
+      <file>${source}</file>
     </parameters>
   </node>
   <node id="Sen2Cor">
