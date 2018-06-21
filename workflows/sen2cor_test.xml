@@ -39,9 +39,6 @@
       <demUnit>0</demUnit>
       <adjacencyRange>1.0</adjacencyRange>
       <smoothWVMap>100.0</smoothWVMap>
-      <Generate DEM output>FALSE</Generate DEM output>
-      <Generate TCI output>TRUE</Generate TCI output>
-      <Generate DDV output>FALSE</Generate DDV output>
     </parameters>
   </node>
   <node id="Write">
