@@ -52,7 +52,8 @@ for /D /R %sourceDirectory% %%F in (S2*.SAFE) do (
   :: set targetFile=%targetDirectory%\%targetFilePrefix%_%%~nF.dim
   set targetFile=%targetDirectory%\%%~nF.dim
   :: set procCmd=%gptPath% %graphXmlPath% -e -p %parameterFilePath% -t "!targetFile!" "!sourceFile!"
-  set procCmd=%gptPath% %graphXmlPath% -e -t "!targetFile!" -Psource="!sourceFile!"
+  :: set procCmd=%gptPath% %graphXmlPath% -e -t "!targetFile!" -Psource="!sourceFile!"
+  set procCmd=%gptPath% %graphXmlPath% -e -t "!targetFile!" "!sourceFile!"
   echo !procCmd!
   call !procCmd! 
 )
