@@ -8,7 +8,13 @@ setlocal ENABLEDELAYEDEXPANSION
 ::::::::::::::::::::::::::::::::::::::::::::
 
 :: Example call for this script
-:: sen2cor_test.bat sen2cor_test.xml D:\sentinel\data\l1c D:\sentinel\data\l2a
+:: Windows key: cmd
+:: 
+:: D:
+:: cd sentinel\KILI....
+:: vegindex.bat vegindex.xml D:\sentinel\data\l2a D:\sentinel\data\products
+:: 
+:: Search strings at google: Windows command line or windows batch file or windows bat file
 
 :: adapt this path to your needs
 set gptPath="C:\Program Files\snap\bin\gpt.exe"
@@ -46,15 +52,15 @@ md %targetDirectory%
 
 :: double '%' in batch file and only a single '%' on command line
 :: '/D' is for directories like Sentinel data. Remove '/D' when you open files.
-for /D /R %sourceDirectory% %%F in (S2A_MSIL1C*.SAFE) do (
+for /D /R %sourceDirectory% %%F in (S2A_MSIL2A*) do (
   echo .
   :: '~fF' means abolute path of 'F'
   set sourceFile=%%~fF
   echo Processing !sourceFile!
   :: '~nF' means filename without extension of 'F'
   set out=%%~nF
-  set outfile=!out:S2A_MSIL1C=S2A_MSIL2A!
-  set targetFile=%targetDirectory%\!outfile!.dim
+  :: set outfile=!out:S2A_MSIL1C=S2A_MSIL2A!
+  set targetFile=%targetDirectory%\vegindex_!out!.dim
   :: set targetFile=%targetDirectory%\%%~nF.dim
   :: set procCmd=%gptPath% %graphXmlPath% -e -p %parameterFilePath% -t "!targetFile!" "!sourceFile!"
   set procCmd=%gptPath% %graphXmlPath% -e -t "!targetFile!" -Pinfile="!sourceFile!"
