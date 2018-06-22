@@ -1,5 +1,15 @@
 <graph id="Graph">
   <version>1.0</version>
+<<<<<<< HEAD
+=======
+  <node id="Read">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>D:\sentinel\S2A_MSIL1C_20180223T073911_N0206_R092_T37MCS_20180223T112255.SAFE</file>
+    </parameters>
+  </node>
+>>>>>>> parent of 91c9c24... Adjust xml graph file.
   <node id="Sen2Cor">
     <operator>Sen2Cor</operator>
     <sources>
