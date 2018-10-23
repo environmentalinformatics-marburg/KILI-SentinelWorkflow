@@ -24,18 +24,18 @@ set gptPath="C:\Program Files\snap\bin\gpt.exe"
 ::::::::::::::::::::::::::::::::::::::::::::
 
 :: first parameter is a path to the graph xml
-set graphXmlPath=%1
+set graphXmlPath=D:\sentinel\KILI-SentinelWorkflow\workflows\vegindex.xml
 
 :: second parameter is a path to a parameter file
 :: set parameterFilePath=%2
 
 :: use third parameter for path to source products
-set sourceDirectory=%2
+set sourceDirectory=D:\sentinel\data\l2a
 :: if sourceDirectory ends with '\' remove it
 ::if %sourceDirectory:~-1%==\ set sourceDirectory=%sourceDirectory:~0,-1%
 
 :: use third parameter for path to target products
-set targetDirectory=%3
+set targetDirectory=D:\sentinel\data\products
 :: if targetDirectory ends with '\' remove it
 ::if %targetDirectory:~-1%==\ set targetDirectory=%targetDirectory:~0,-1%
 
@@ -52,7 +52,7 @@ md %targetDirectory%
 
 :: double '%' in batch file and only a single '%' on command line
 :: '/D' is for directories like Sentinel data. Remove '/D' when you open files.
-for /D /R %sourceDirectory% %%F in (S2A_MSIL2A*) do (
+for /R %sourceDirectory% %%F in (S2A_MSIL2A*.dim) do (
   echo .
   :: '~fF' means abolute path of 'F'
   set sourceFile=%%~fF

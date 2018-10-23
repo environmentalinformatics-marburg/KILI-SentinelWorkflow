@@ -4,11 +4,11 @@
     <operator>Read</operator>
     <sources/>
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
-      <file>D:\sentinel\data\l2a\S2A_MSIL2A_20180223T073911_N0206_R092_T37MCS_20180223T112255.dim</file>
+      <file>${infile}</file>
     </parameters>
   </node>
-  <node id="TndviOp">
-    <operator>TndviOp</operator>
+  <node id="CiOp">
+    <operator>CiOp</operator>
     <sources>
       <sourceProduct refid="Read"/>
     </sources>
@@ -17,19 +17,9 @@
       <upsampling>Nearest</upsampling>
       <downsampling>First</downsampling>
       <redFactor>1.0</redFactor>
-      <nirFactor>1.0</nirFactor>
+      <greenFactor>1.0</greenFactor>
       <redSourceBand>B4</redSourceBand>
-      <nirSourceBand>B8A</nirSourceBand>
-    </parameters>
-  </node>
-  <node id="Write">
-    <operator>Write</operator>
-    <sources>
-      <sourceProduct refid="TndviOp"/>
-    </sources>
-    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
-      <file>D:\sentinel\Test\tndvi.dim</file>
-      <formatName>BEAM-DIMAP</formatName>
+      <greenSourceBand>B3</greenSourceBand>
     </parameters>
   </node>
   <applicationData id="Presentation">
@@ -37,11 +27,8 @@
     <node id="Read">
             <displayPosition x="37.0" y="134.0"/>
     </node>
-    <node id="TndviOp">
-      <displayPosition x="260.0" y="187.0"/>
-    </node>
-    <node id="Write">
-            <displayPosition x="455.0" y="135.0"/>
+    <node id="CiOp">
+      <displayPosition x="242.0" y="193.0"/>
     </node>
   </applicationData>
 </graph>

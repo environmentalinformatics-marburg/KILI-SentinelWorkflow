@@ -1,0 +1,34 @@
+<graph id="Graph">
+  <version>1.0</version>
+  <node id="Read">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>${infile}</file>
+    </parameters>
+  </node>
+  <node id="GndviOp">
+    <operator>GndviOp</operator>
+    <sources>
+      <sourceProduct refid="Read"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <resampleType>Lowest resolution</resampleType>
+      <upsampling>Nearest</upsampling>
+      <downsampling>First</downsampling>
+      <greenFactor>1.0</greenFactor>
+      <nirFactor>1.0</nirFactor>
+      <greenSourceBand>B3</greenSourceBand>
+      <nirSourceBand>B7</nirSourceBand>
+    </parameters>
+  </node>
+  <applicationData id="Presentation">
+    <Description/>
+    <node id="Read">
+            <displayPosition x="37.0" y="134.0"/>
+    </node>
+    <node id="GndviOp">
+      <displayPosition x="221.0" y="187.0"/>
+    </node>
+  </applicationData>
+</graph>

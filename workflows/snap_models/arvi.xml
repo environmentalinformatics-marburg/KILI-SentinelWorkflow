@@ -1,0 +1,41 @@
+<graph id="Graph">
+  <version>1.0</version>
+  <node id="Read">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>${infile}</file>
+    </parameters>
+  </node>
+  <node id="ArviOp">
+    <operator>ArviOp</operator>
+    <sources>
+      <sourceProduct refid="Read"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <resampleType>Lowest resolution</resampleType>
+      <upsampling>Nearest</upsampling>
+      <downsampling>First</downsampling>
+      <redFactor>1.0</redFactor>
+      <blueFactor>1.0</blueFactor>
+      <nirFactor>1.0</nirFactor>
+      <gammaParameter>1.0</gammaParameter>
+      <redSourceBand>B4</redSourceBand>
+      <blueSourceBand>B2</blueSourceBand>
+      <nirSourceBand>B8A</nirSourceBand>
+    </parameters>
+  </node>
+ 
+  <applicationData id="Presentation">
+    <Description/>
+    <node id="Read">
+            <displayPosition x="37.0" y="134.0"/>
+    </node>
+    <node id="ArviOp">
+      <displayPosition x="233.0" y="134.0"/>
+    </node>
+    <node id="Write">
+            <displayPosition x="455.0" y="135.0"/>
+    </node>
+  </applicationData>
+</graph>

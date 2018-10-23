@@ -1,0 +1,38 @@
+<graph id="Graph">
+  <version>1.0</version>
+  <node id="Read">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>${infile}</file>
+    </parameters>
+  </node>
+  <node id="IreciOp">
+    <operator>IreciOp</operator>
+    <sources>
+      <sourceProduct refid="Read"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <resampleType>Lowest resolution</resampleType>
+      <upsampling>Nearest</upsampling>
+      <downsampling>First</downsampling>
+      <redB4Factor>1.0</redB4Factor>
+      <redB5Factor>1.0</redB5Factor>
+      <redB6Factor>1.0</redB6Factor>
+      <nirFactor>1.0</nirFactor>
+      <redSourceBand4>B4</redSourceBand4>
+      <redSourceBand5>B5</redSourceBand5>
+      <redSourceBand6>B6</redSourceBand6>
+      <nirSourceBand>B7</nirSourceBand>
+    </parameters>
+  </node>
+  <applicationData id="Presentation">
+    <Description/>
+    <node id="Read">
+            <displayPosition x="37.0" y="134.0"/>
+    </node>
+    <node id="IreciOp">
+      <displayPosition x="159.0" y="165.0"/>
+    </node>
+  </applicationData>
+</graph>

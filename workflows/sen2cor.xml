@@ -16,7 +16,7 @@
       <targetProductFile/>
       <postExecuteTemplate>Sen2Cor-post-template.vm</postExecuteTemplate>
       <sceneOnly/>
-      <resolution>60</resolution>
+      <resolution>ALL</resolution>
       <crOnly>false</crOnly>
       <gip25L2A>Sen2Cor-gipp-template.xsl</gip25L2A>
       <gipL2A>Sen2Cor-gipp-template.xsl</gipL2A>
@@ -39,9 +39,9 @@
       <demUnit>0</demUnit>
       <adjacencyRange>1.0</adjacencyRange>
       <smoothWVMap>100.0</smoothWVMap>
-	  <generateDEMoutput>FALSE</generateDEMoutput>
+	  <generateDEMoutput>TRUE</generateDEMoutput>
       <generateTCIoutput>TRUE</generateTCIoutput>
-      <generateDDVoutput>FALSE</generateDDVoutput>
+      <generateDDVoutput>TRUE</generateDDVoutput>
     </parameters>
   </node>
   <applicationData id="Presentation">

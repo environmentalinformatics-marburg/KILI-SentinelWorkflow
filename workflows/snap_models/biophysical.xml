@@ -1,0 +1,55 @@
+<graph id="Graph">
+  <version>1.0</version>
+  <node id="Read">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+	  <file>${infile}</file>
+	</parameters>
+  </node>
+  <node id="Resample">
+    <operator>Resample</operator>
+    <sources>
+      <sourceProduct refid="Read"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <referenceBand/>
+      <targetWidth/>
+      <targetHeight/>
+      <targetResolution>60</targetResolution>
+      <upsampling>Nearest</upsampling>
+      <downsampling>First</downsampling>
+      <flagDownsampling>First</flagDownsampling>
+      <resampleOnPyramidLevels>true</resampleOnPyramidLevels>
+    </parameters>
+  </node>
+  <node id="BiophysicalOp">
+    <operator>BiophysicalOp</operator>
+    <sources>
+      <sourceProduct refid="Resample"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <computeLAI>true</computeLAI>
+      <computeFapar>true</computeFapar>
+      <computeFcover>true</computeFcover>
+      <computeCab>true</computeCab>
+      <computeCw>true</computeCw>
+    </parameters>
+  </node>
+  
+  <applicationData id="Presentation">
+    <Description/>
+    <node id="Read">
+            <displayPosition x="37.0" y="134.0"/>
+    </node>
+    <node id="Resample">
+      <displayPosition x="168.0" y="243.0"/>
+    </node>
+    <node id="BiophysicalOp">
+      <displayPosition x="323.0" y="252.0"/>
+    </node>
+    <node id="Write">
+            <displayPosition x="455.0" y="135.0"/>
+    </node>
+  </applicationData>
+</graph>

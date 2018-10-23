@@ -4,7 +4,7 @@
     <operator>Read</operator>
     <sources/>
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
-      <file>D:\sentinel\Test\S2A_MSIL2A_20180223T073911_N0206_R092_T37MCS_20180223T112255.dim</file>
+      <file>${infile}</file>
     </parameters>
   </node>
   <node id="TsaviOp">
@@ -13,7 +13,7 @@
       <sourceProduct refid="Read"/>
     </sources>
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
-      <resampleType>None</resampleType>
+      <resampleType>Lowest resolution</resampleType>
       <upsampling>Nearest</upsampling>
       <downsampling>First</downsampling>
       <redFactor>1.0</redFactor>
@@ -22,20 +22,10 @@
       <intercept>0.5</intercept>
       <adjustment>0.08</adjustment>
       <redSourceBand>B4</redSourceBand>
-      <nirSourceBand>B8</nirSourceBand>
+      <nirSourceBand>B8A</nirSourceBand>
     </parameters>
   </node>
-  <node id="Write">
-    <operator>Write</operator>
-    <sources>
-      <sourceProduct refid="TsaviOp"/>
-    </sources>
-    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
-      <file>D:\sentinel\Test\tsavi.dim</file>
-      <formatName>BEAM-DIMAP</formatName>
-    </parameters>
-  </node>
-  <applicationData id="Presentation">
+    <applicationData id="Presentation">
     <Description/>
     <node id="Read">
       <displayPosition x="24.0" y="69.0"/>

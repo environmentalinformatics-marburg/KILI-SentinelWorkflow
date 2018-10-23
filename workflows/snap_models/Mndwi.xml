@@ -1,0 +1,34 @@
+<graph id="Graph">
+  <version>1.0</version>
+  <node id="Read">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>${infile}</file>
+    </parameters>
+  </node>
+  <node id="MndwiOp">
+    <operator>MndwiOp</operator>
+    <sources>
+      <sourceProduct refid="Read"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <resampleType>Lowest resolution</resampleType>
+      <upsampling>Nearest</upsampling>
+      <downsampling>First</downsampling>
+      <greenFactor>1.0</greenFactor>
+      <mirFactor>1.0</mirFactor>
+      <greenSourceBand>B3</greenSourceBand>
+      <mirSourceBand>B12</mirSourceBand>
+    </parameters>
+  </node>
+  <applicationData id="Presentation">
+    <Description/>
+    <node id="Read">
+            <displayPosition x="37.0" y="134.0"/>
+    </node>
+    <node id="MndwiOp">
+      <displayPosition x="197.0" y="230.0"/>
+    </node>
+  </applicationData>
+</graph>
