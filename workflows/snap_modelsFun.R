@@ -1,0 +1,67 @@
+##Snapmodels_function of the graph_xml files#
+snapmodels_function= function(graphxml_files, a, graphxml_filepath){
+  
+  #Define path to graphxml_files#
+  
+  
+  
+  graphXml_files = list.files(a, 
+                              pattern = glob2rx("*.xml"),
+                              full.names = TRUE)
+  for(xml_file in graphXml_files) {
+    print(output)
+    
+    # Define input dataset path, and create a variable for the infile #
+    # A loop will run over each input dataset within this folder and process it 
+    
+    input_path = "D:/sentinel/data/l2a"
+    
+    input_files = list.files(input_path,
+                             
+                             pattern=glob2rx("S2A_MSIL2A*.SAFE"),
+                             
+                             full.names = TRUE)
+    
+    #Loop over all input_files and process them#
+    
+    for(infile in input_files) {
+      print(infile)
+      # For testing: infile = input_files[[1]]
+      for(infile in input_files) {
+        print(paste0("processing file, infile"))
+        
+        # Loop over all xml files, create the output filename and run the command.
+        # For testing: xml_file = graphXml_files[[2]]
+        for(xml_file in graphxml_files) {
+          
+          # print(xml_file)
+          # Get product name from xml filename and use it as prefix for the output file
+          
+          prefix = substring(basename(xml_file), 1, nchar(basename(xml_file))-4)    
+          
+          # Create output file path for the output file# 
+          
+          output_path = "D:/sentinel/data/products"
+          
+          # outname = basename(file_path_sans_ext(infile))
+          # outname = basename(infile) #remove .SAFE
+          
+          outname = substring(basename(infile), 1, nchar(basename(infile))-5) 
+          
+          outfile = paste0(output_path, "/", prefix, "_", outname, ".dim")
+          
+          # Compile command for snapmodels function 
+          Cmd = paste0(snapmodels_function("", xml_file, "-e, -t", outfile, "-Pinfile=", infile))
+          system(Cmd)
+          
+        } 
+      }
+    }
+  }
+}
+
+
+snapmodels_function(a="D:/sentinel/KILI-SentinelWorkflow/workflows/snap_models/",
+                    output="xml_file") 
+ 
+
